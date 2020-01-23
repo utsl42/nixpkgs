@@ -217,7 +217,15 @@ in
 
   dotnetCorePackages = recurseIntoAttrs (callPackage ../development/compilers/dotnet {});
 
-  dotnet-sdk = dotnetCorePackages.sdk_2_2;
+  dotnet-sdk = dotnetCorePackages.sdk_2_1;
+
+  dotnet-sdk_2 = dotnetCorePackages.sdk_2_1;
+
+  dotnet-sdk_3 = dotnetCorePackages.sdk_3_1;
+
+  dotnet-netcore = dotnetCorePackages.netcore_2_1;
+
+  dotnet-aspnetcore = dotnetCorePackages.aspnetcore_2_1;
 
   dumb-init = callPackage ../applications/virtualization/dumb-init {};
 
@@ -1528,6 +1536,8 @@ in
 
   dante = callPackage ../servers/dante { };
 
+  dasher = callPackage ../applications/accessibility/dasher { };
+
   datamash = callPackage ../tools/misc/datamash { };
 
   datasette = with python3Packages; toPythonApplication datasette;
@@ -1584,6 +1594,8 @@ in
   dirb = callPackage ../tools/networking/dirb { };
 
   direnv = callPackage ../tools/misc/direnv { };
+
+  h = callPackage ../tools/misc/h { };
 
   discount = callPackage ../tools/text/discount { };
 
@@ -1920,6 +1932,8 @@ in
 
   megasync = libsForQt5.callPackage ../applications/misc/megasync { };
 
+  megacmd = callPackage ../applications/misc/megacmd { };
+
   meritous = callPackage ../games/meritous { };
 
   opendune = callPackage ../games/opendune { };
@@ -2053,6 +2067,8 @@ in
   step-ca = callPackage ../tools/security/step-ca { };
 
   step-cli = callPackage ../tools/security/step-cli { };
+
+  string-machine = callPackage ../applications/audio/string-machine { };
 
   bash-supergenpass = callPackage ../tools/security/bash-supergenpass { };
 
@@ -2943,6 +2959,10 @@ in
   eid-mw = callPackage ../tools/security/eid-mw { };
 
   epubcheck = callPackage ../tools/text/epubcheck { };
+
+  luckybackup = libsForQt5.callPackage ../tools/backup/luckybackup {
+    ssh = openssh;
+  };
 
   mcrcon = callPackage ../tools/networking/mcrcon {};
 
@@ -4532,7 +4552,9 @@ in
 
   mautrix-whatsapp = callPackage ../servers/mautrix-whatsapp { };
 
-  mcfly = callPackage ../tools/misc/mcfly { };
+  mcfly = callPackage ../tools/misc/mcfly {
+    inherit (darwin.apple_sdk.frameworks) Security;
+  };
 
   mdbook = callPackage ../tools/text/mdbook {
     inherit (darwin.apple_sdk.frameworks) CoreServices;
@@ -5121,6 +5143,8 @@ in
 
   munt = libsForQt5.callPackage ../applications/audio/munt { };
 
+  mutagen = callPackage ../tools/misc/mutagen { };
+
   mycli = callPackage ../tools/admin/mycli { };
 
   mydumper = callPackage ../tools/backup/mydumper { };
@@ -5699,6 +5723,8 @@ in
 
   peco = callPackage ../tools/text/peco { };
 
+  pg_checksums = callPackage ../development/tools/database/pg_checksums { };
+
   pg_flame = callPackage ../tools/misc/pg_flame { };
 
   pg_top = callPackage ../tools/misc/pg_top { };
@@ -6223,6 +6249,8 @@ in
   safeeyes = callPackage ../applications/misc/safeeyes { };
 
   sahel-fonts = callPackage ../data/fonts/sahel-fonts { };
+
+  saldl = callPackage ../tools/networking/saldl { };
 
   salt = callPackage ../tools/admin/salt {};
 
@@ -7563,6 +7591,8 @@ in
   zpaqd = callPackage ../tools/archivers/zpaq/zpaqd.nix { };
 
   zsh-autoenv = callPackage ../tools/misc/zsh-autoenv { };
+  
+  zsh-bd = callPackage ../shells/zsh/zsh-bd { };
 
   zsh-git-prompt = callPackage ../shells/zsh/zsh-git-prompt { };
 
@@ -8430,7 +8460,9 @@ in
 
   inherit (callPackages ../development/compilers/graalvm { }) mx jvmci8 graalvm8;
 
-  graalvm8-ee = callPackage ../development/compilers/graalvm/enterprise-edition.nix { };
+  inherit (callPackages ../development/compilers/graalvm/enterprise-edition.nix { })
+    graalvm8-ee
+    graalvm11-ee;
 
   openshot-qt = libsForQt5.callPackage ../applications/video/openshot-qt { };
 
@@ -8752,7 +8784,7 @@ in
 
   buildRustCrate = callPackage ../build-support/rust/build-rust-crate { };
   buildRustCrateHelpers = callPackage ../build-support/rust/build-rust-crate/helpers.nix { };
-  buildRustCrateTests = recurseIntoAttrs (callPackage ../build-support/rust/build-rust-crate/test { }).tests;
+  buildRustCrateTests = recurseIntoAttrs (callPackage ../build-support/rust/build-rust-crate/test { });
   cratesIO = callPackage ../build-support/rust/crates-io.nix { };
 
   cargo-web = callPackage ../development/tools/cargo-web {
@@ -9635,7 +9667,9 @@ in
   inherit (callPackage ../tools/admin/ansible { })
     ansible
     ansible_2_6
-    ansible_2_7;
+    ansible_2_7
+    ansible_2_8
+    ansible_2_9;
 
   ansible-lint = with python3.pkgs; toPythonApplication ansible-lint;
 
@@ -9780,9 +9814,9 @@ in
 
   buck = callPackage ../development/tools/build-managers/buck { };
 
-  buildkite-agent = buildkite-agent2;
-  buildkite-agent2 = callPackage ../development/tools/continuous-integration/buildkite-agent/2.x.nix { };
-  buildkite-agent3 = callPackage ../development/tools/continuous-integration/buildkite-agent/3.x.nix { };
+  buildkite-agent = buildkite-agent3;
+  buildkite-agent2 = throw "pkgs.buildkite-agent2 has been discontinued. Please use pkgs.buildkite-agent (v3.x)";
+  buildkite-agent3 = callPackage ../development/tools/continuous-integration/buildkite-agent { };
 
   libbpf = callPackage ../os-specific/linux/libbpf { };
 
@@ -11448,6 +11482,8 @@ in
   gegl_0_4 = callPackage ../development/libraries/gegl/4.0.nix {
     inherit (darwin.apple_sdk.frameworks) OpenCL;
   };
+
+  gensio = callPackage ../development/libraries/gensio {};
 
   geoclue2 = callPackage ../development/libraries/geoclue {};
 
@@ -14009,7 +14045,6 @@ in
   lilv = callPackage ../development/libraries/audio/lilv { };
 
   lv2 = callPackage ../development/libraries/audio/lv2 { };
-  lv2Unstable = callPackage ../development/libraries/audio/lv2/unstable.nix { };
 
   lvtk = callPackage ../development/libraries/audio/lvtk { };
 
@@ -17132,7 +17167,7 @@ in
     ubootBananaPi
     ubootBananaPim3
     ubootBananaPim64
-    ubootBeagleboneBlack
+    ubootAmx335xEVM
     ubootClearfog
     ubootGuruplug
     ubootJetsonTK1
@@ -17218,10 +17253,6 @@ in
   wpa_supplicant_gui = libsForQt5.callPackage ../os-specific/linux/wpa_supplicant/gui.nix { };
 
   xf86_input_cmt = callPackage ../os-specific/linux/xf86-input-cmt { };
-
-  xf86_input_mtrack = callPackage ../os-specific/linux/xf86-input-mtrack { };
-
-  xf86_input_multitouch = callPackage ../os-specific/linux/xf86-input-multitouch { };
 
   xf86_input_wacom = callPackage ../os-specific/linux/xf86-input-wacom { };
 
@@ -18088,6 +18119,9 @@ in
   ao = libfive;
 
   apache-directory-studio = callPackage ../applications/networking/apache-directory-studio {};
+
+  apngasm = callPackage ../applications/graphics/apngasm {};
+  apngasm_2 = callPackage ../applications/graphics/apngasm/2.nix {};
 
   appeditor = callPackage ../applications/misc/appeditor { };
 
@@ -19691,6 +19725,8 @@ in
 
   imgcat = callPackage ../applications/graphics/imgcat { };
 
+  imgp = python3Packages.callPackage ../applications/graphics/imgp { };
+
   # Impressive, formerly known as "KeyJNote".
   impressive = callPackage ../applications/office/impressive { };
 
@@ -19882,7 +19918,7 @@ in
   kubeval = callPackage ../applications/networking/cluster/kubeval { };
 
   kubernetes = callPackage ../applications/networking/cluster/kubernetes {
-    go = buildPackages.go_1_12;
+    go = buildPackages.go_1_13;
   };
 
   kubeseal = callPackage ../applications/networking/cluster/kubeseal { };
@@ -20642,7 +20678,7 @@ in
 
   obs-linuxbrowser = callPackage ../applications/video/obs-studio/linuxbrowser.nix { };
 
-  obs-studio = libsForQt5.callPackage ../applications/video/obs-studio { };
+  obs-studio = libsForQt5.callPackage ../applications/video/obs-studio { ffmpeg = ffmpeg_4; };
 
   obs-wlrobs = callPackage ../applications/video/obs-studio/wlrobs.nix { };
 
@@ -23131,6 +23167,8 @@ in
 
   newtonwars = callPackage ../games/newtonwars { };
 
+  nudoku = callPackage ../games/nudoku { };
+
   nxengine-evo = callPackage ../games/nxengine-evo { };
 
   odamex = callPackage ../games/odamex { };
@@ -25201,6 +25239,8 @@ in
 
   redprl = callPackage ../applications/science/logic/redprl { };
 
+  renderizer = pkgs.callPackage ../development/tools/renderizer {};
+
   retroarchBare = callPackage ../misc/emulators/retroarch {
     inherit (darwin) libobjc;
     inherit (darwin.apple_sdk.frameworks) AppKit Foundation;
@@ -25305,6 +25345,8 @@ in
   };
 
   seafile-shared = callPackage ../misc/seafile-shared { };
+
+  ser2net = callPackage ../servers/ser2net {};
 
   serviio = callPackage ../servers/serviio {};
   selinux-python = callPackage ../os-specific/linux/selinux-python { };

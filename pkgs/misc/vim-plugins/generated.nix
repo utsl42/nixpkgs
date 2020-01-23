@@ -919,6 +919,17 @@ let
     };
   };
 
+  deoplete-emoji = buildVimPluginFrom2Nix {
+    pname = "deoplete-emoji";
+    version = "2019-01-20";
+    src = fetchFromGitHub {
+      owner = "fszymanski";
+      repo = "deoplete-emoji";
+      rev = "1dfa2da6ae3ee146ddfbfdba48cf45f0c1d57d7d";
+      sha256 = "0drqbdmy8igq6rv7s2qlxsp391pydcynlr9gkaadzrg7pk4nlgsb";
+    };
+  };
+
   deoplete-fish = buildVimPluginFrom2Nix {
     pname = "deoplete-fish";
     version = "2020-01-02";
@@ -987,6 +998,17 @@ let
     };
   };
 
+  deoplete-notmuch = buildVimPluginFrom2Nix {
+    pname = "deoplete-notmuch";
+    version = "2018-12-11";
+    src = fetchFromGitHub {
+      owner = "Valodim";
+      repo = "deoplete-notmuch";
+      rev = "828b5acf1924f9869614e93855a0d8cc94f1a74d";
+      sha256 = "1l2pfazhpkz26zwbjdafvhgvjj533kncm7dywlandsf3cibm8mv9";
+    };
+  };
+
   deoplete-rust = buildVimPluginFrom2Nix {
     pname = "deoplete-rust";
     version = "2017-07-18";
@@ -1017,6 +1039,17 @@ let
       repo = "deoplete-ternjs";
       rev = "5405e84a44fc4ab5234c9a253ad4aa2b161e5897";
       sha256 = "0684f9ci0y4wihf04z9r8x55cir02al4wp911dz0zg678z8w0yha";
+    };
+  };
+
+  deoplete-zsh = buildVimPluginFrom2Nix {
+    pname = "deoplete-zsh";
+    version = "2019-11-10";
+    src = fetchFromGitHub {
+      owner = "deoplete-plugins";
+      repo = "deoplete-zsh";
+      rev = "92b7afc3804dd17a849b207e184359558ab8f444";
+      sha256 = "0zsbkl82kny1vmfv06iz576xsclbik0xr7ndzpb0ddhw5nfnicfx";
     };
   };
 
@@ -4182,6 +4215,17 @@ let
     };
   };
 
+  vim-indentwise = buildVimPluginFrom2Nix {
+    pname = "vim-indentwise";
+    version = "2015-06-07";
+    src = fetchFromGitHub {
+      owner = "jeetsukumaran";
+      repo = "vim-indentwise";
+      rev = "608bd6876d3b56d469e0e615eb774a6e06095dbf";
+      sha256 = "0bnzk1afi88icq58389nxqz196gkxcj71qrxvw87d72h2zaspvcx";
+    };
+  };
+
   vim-indexed-search = buildVimPluginFrom2Nix {
     pname = "vim-indexed-search";
     version = "2019-07-04";
@@ -4972,6 +5016,17 @@ let
       repo = "vim-salve";
       rev = "876104d364420a7a11a2d97729dd4ab0a2f8a72e";
       sha256 = "1hj0qg182jv3cwg85rg4z0f8f8hr409is71z7sxhnhjq9fn1h6xj";
+    };
+  };
+
+  vim-sandwich = buildVimPluginFrom2Nix {
+    pname = "vim-sandwich";
+    version = "2019-12-06";
+    src = fetchFromGitHub {
+      owner = "machakann";
+      repo = "vim-sandwich";
+      rev = "a0cde9cfb20d9aff10a09b7fc776231f7856abef";
+      sha256 = "0dzrzz9ngprh2zd3wnnbr9qcs7ilgchadw4l39ncny6x43fk2ckd";
     };
   };
 

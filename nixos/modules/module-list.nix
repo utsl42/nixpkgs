@@ -153,6 +153,7 @@
   ./programs/system-config-printer.nix
   ./programs/thefuck.nix
   ./programs/tmux.nix
+  ./programs/traceroute.nix
   ./programs/tsm-client.nix
   ./programs/udevil.nix
   ./programs/usbtop.nix
@@ -871,7 +872,6 @@
   ./services/x11/display-managers/xpra.nix
   ./services/x11/fractalart.nix
   ./services/x11/hardware/libinput.nix
-  ./services/x11/hardware/multitouch.nix
   ./services/x11/hardware/synaptics.nix
   ./services/x11/hardware/wacom.nix
   ./services/x11/hardware/digimend.nix

@@ -64,6 +64,7 @@ davidhalter/jedi-vim
 dcharbon/vim-flatbuffers
 deoplete-plugins/deoplete-dictionary
 deoplete-plugins/deoplete-jedi
+deoplete-plugins/deoplete-zsh
 derekelkins/agda-vim
 derekwyatt/vim-scala
 dhruvasagar/vim-table-mode
@@ -98,6 +99,7 @@ floobits/floobits-neovim
 freitass/todo.txt-vim
 frigoeu/psc-ide-vim
 fsharp/vim-fsharp
+fszymanski/deoplete-emoji
 garbas/vim-snipmate
 gentoo/gentoo-syntax
 gibiansky/vim-textobj-haskell
@@ -145,6 +147,7 @@ JazzCore/ctrlp-cmatcher
 jceb/vim-hier
 jceb/vim-orgmode
 jeetsukumaran/vim-buffergator
+jeetsukumaran/vim-indentwise
 jeffkreeftmeijer/neovim-sensible
 jelera/vim-javascript-syntax
 jgdavey/tslime.vim
@@ -221,6 +224,7 @@ luochen1990/rainbow
 lyokha/vim-xkbswitch
 machakann/vim-highlightedyank
 machakann/vim-swap
+machakann/vim-sandwich
 majutsushi/tagbar
 maksimr/vim-jsbeautify
 MarcWeber/vim-addon-actions
@@ -483,6 +487,7 @@ uarun/vim-protobuf
 udalov/kotlin-vim
 ujihisa/neco-look
 unblevable/quick-scope
+Valodim/deoplete-notmuch
 valloric/youcompleteme
 vhda/verilog_systemverilog.vim
 vim-airline/vim-airline
